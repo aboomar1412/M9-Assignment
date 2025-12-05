@@ -1,13 +1,14 @@
-// js/modules/init.js
-
 export async function loadEmployees() {
     try {
-        const response = await fetch('../data/employees.json');
-        if (!response.ok) throw new Error('Failed to load employee data');
-        const employees = await response.json();
-        return employees;
-    } 
-    catch (err) {
-        console.error('Error loading employee data:', err);
+        // Fetch the JSON file from the data folder
+        const response = await fetch('./data/employees.json');
+        
+        // Convert the response to a JSON object
+        const data = await response.json();
+        
+        // Return the data to the caller
+        return data;
+    } catch (error) {
+        console.error('Error loading employees:', error);
     }
 }
